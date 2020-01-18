@@ -5,26 +5,32 @@ class Core
 {
     protected $currentController = 'Pages';
     protected $currentMethod = 'index';
+    protected $params = array(); //loome tyhja array
     public function __construct()
     {
         $url = $this->getUrl();
-        // controller
+        // controller, mis kontrollib kas nait /pages eksisteerib
         if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')){
             $this->currentController = ucwords($url[0]);
             unset($url[0]);
         }
         require_once '../app/controllers/'.$this->currentController.'.php';
-        $this->currentController = new $this->currentController;
+        $this->currentController = new $this->currentController; //siin kaidi kontrollers kausta mingis failis .php ja tehti seal olevad konstruktor!
         // method
         if(method_exists($this->currentController, $url[1])){
             $this->currentMethod = $url[1];
             unset($url[1]);
         }
-
-        echo '<pre>';
-        print_r($url);
-        echo '</pre>';
+        // params
+        $this->params = $url ? array_values($url) : array();
+        // call a callback function with url parameters - controller, method and params
+        call_user_func_array(array($this->currentController, $this->currentMethod), $this->params);
     }
+
+//        echo '<pre>';
+//        print_r($url);
+//        echo '</pre>';
+//    }
 
     public function getUrl(){
         if(isset($_GET['url'])){

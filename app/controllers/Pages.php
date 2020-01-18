@@ -1,23 +1,21 @@
 <?php
 
 
-class Posts extends Controller
+class Pages extends Controller
 {
-
     /**
-     * Posts constructor.
+     * Pages constructor.
      */
     public function __construct()
     {
-        echo 'Posts is loaded<br>';
     }
 
-    public function edit($postId){
-        echo 'edit method is loaded<br>';
-        echo 'post '.$postId.' is edited<br>';
+    public function edit(){
+        $this->view('pages/edit');
     }
 
     public function index() {
-        echo 'index method is loaded<br>';
+        $data = array('title' => 'Pages controller is loaded');
+        $this->view('pages/index', $data);
     }
 }
