@@ -14,7 +14,7 @@ class Controller
     public function view($view, $data = array()){
         //l@hme indeks failist v@lja app kausta, views kausta
         if (file_exists('../app/views')){
-            //juhul kui selline fail on olemas tuleb see kasututslee v6tta
+            //juhul kui selline fail on olemas tuleb see kasututsle v6tta
             require_once '../app/views/'.$view.'.php';
         } else {
             die('View '.$view.' does not exist<br>');
