@@ -23,4 +23,9 @@ class Page
         }
         $this->db->execute();
     }
+
+    public function getUsers(){
+        $this->db->query('SELECT * FROM users');
+        return $this->db->getAll();
+    }
 }

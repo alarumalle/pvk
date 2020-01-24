@@ -4,10 +4,9 @@
 class Database
 {
     private $host = DB_HOST;
-//    vead
-    private $user = 'root';
-    private $pass = '';
-    private $dbname ='pdo';
+    private $user = DB_USER;
+    private $pass = DB_PASS;
+    private $dbname = DB_NAME;
 
     private $dbh;
     private $stmt;
@@ -36,7 +35,6 @@ public function query(){
 }
 
 //nyyd peame panema v@@rtused ehk v@ljund
-//}
 
 public function bind($param, $value, $type=null){
     if(is_null($type)){
@@ -58,13 +56,12 @@ public function bind($param, $value, $type=null){
     $this->stmt->bindValue($param, $value, $type);
 }
 
-public function execute(){
-    $this->stmt->execute();
-}
+    public function execute(){
+        $this->stmt->execute();
+    }
 
-public function getUsers(){
-    $this->execute();
-    return $this->
-//        ???
-}
+    public function getAll(){
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

@@ -7,8 +7,19 @@ class Pages extends Controller
      * Pages constructor.
      */
     public function __construct()
+//model osa 23012020
     {
+        $this->pagesModel = $this->model('Page');
     }
+
+    public function test()
+    {
+        $users = $this->pagesModel->getUsers();
+        print_r($users);
+    }
+
+//23012020 lisatu lopp
+
 //siit edasi view kausta edit vaatesse
     public function edit(){
         $this->view('pages/edit');

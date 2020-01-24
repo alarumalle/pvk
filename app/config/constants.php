@@ -8,7 +8,7 @@ define('URLROOT', 'http://'.$_SERVER['HTTP_HOST'].'/'.PROJECT_NAME);
 //defineerime konstandi
 define('APPROOT', dirname(dirname(__FILE__)));
 
-//db parameetrid
+//konstandid db parameetrite jaoks, db parameetrid
 define('DB_HOST', 'localhost');
 define('DB_USER', 'user');
 define('DB_PASS', '');
